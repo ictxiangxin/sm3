@@ -1,11 +1,11 @@
-/////////////////////////////////////
-//      [SM3 Digest Programme]     //
-// Author: XiangXin                //
-// E-mail: ictxiangxin@hotmail.com //
-// File: sm3_digest.rs             //
-/////////////////////////////////////
+// [SM3 Digest Programme]
+// Author: XiangXin
+// E-mail: ictxiangxin@hotmail.com
+// File: sm3_digest.rs
 
-use super::sm3_constant::{SM3_BUFFER_BYTE_LENGTH, SM3_DIGEST_BYTE_LENGTH, SM3_DATA_BYTE_MAX_LENGTH};
+pub const SM3_DIGEST_BYTE_LENGTH: usize = 32;
+pub const SM3_BUFFER_BYTE_LENGTH: usize = 64;
+pub const SM3_DATA_BYTE_MAX_LENGTH: usize = 8;
 
 #[inline(always)]
 fn ff_0_16(x: u32, y: u32, z: u32) -> u32 {

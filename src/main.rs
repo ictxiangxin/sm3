@@ -1,15 +1,12 @@
-/////////////////////////////////////
-//      [SM3 Digest Programme]     //
-// Author: XiangXin                //
-// E-mail: ictxiangxin@hotmail.com //
-// File: main.rs                   //
-/////////////////////////////////////
+// [SM3 Digest Programme]
+// Author: XiangXin
+// E-mail: ictxiangxin@hotmail.com
+// File: main.rs
 
 use std::env;
 use std::io::Error;
 
 mod sm3_digest;
-mod sm3_constant;
 mod sm3_utils;
 
 fn string_to_hex(data: [u8; 32]) -> String {

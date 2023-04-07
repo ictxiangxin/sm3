@@ -1,16 +1,14 @@
-/////////////////////////////////////
-//      [SM3 Digest Programme]     //
-// Author: XiangXin                //
-// E-mail: ictxiangxin@hotmail.com //
-// File: sm3_utils.rs              //
-/////////////////////////////////////
+// [SM3 Digest Programme]
+// Author: XiangXin
+// E-mail: ictxiangxin@hotmail.com
+// File: sm3_utils.rs
 
 use std::fs::File;
 use std::io::Read;
 use super::sm3_digest::SM3Digest;
-use super::sm3_constant::SM3_DIGEST_BYTE_LENGTH;
+use super::sm3_digest::SM3_DIGEST_BYTE_LENGTH;
 
-const FILE_READ_SIZE: usize = 0x40000;
+const FILE_READ_SIZE: usize = 0x100000;
 
 pub(crate) struct SM3Utils;
 
