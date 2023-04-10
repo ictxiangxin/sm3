@@ -9,7 +9,7 @@ use std::io::Error;
 mod sm3_digest;
 mod sm3_utils;
 
-fn string_to_hex(data: [u8; 32]) -> String {
+fn binary_to_hex_string(data: [u8; 32]) -> String {
     let mut hex_string: String = String::new();
     fn byte_to_hex(byte: u8) -> char {
         if byte < 10 { (b'0' + byte) as char } else { (b'A' + byte - 10) as char }
@@ -38,12 +38,12 @@ fn main() {
     match arguments[1].as_str() {
         "-s" => {
             let digest_binary: [u8; 32] = sm3_utils::SM3Utils::sm3_data_digest(arguments[2].as_bytes());
-            print!("{}", string_to_hex(digest_binary));
+            print!("{}", binary_to_hex_string(digest_binary));
         }
         "-f" => {
             let digest_binary: Result<[u8; 32], Error> = sm3_utils::SM3Utils::sm3_file_digest(&arguments[2]);
             match digest_binary {
-                Ok(binary) => print!("{}", string_to_hex(binary)),
+                Ok(binary) => print!("{}", binary_to_hex_string(binary)),
                 Err(error) => println!("Error: {error:?}"),
             }
         }
