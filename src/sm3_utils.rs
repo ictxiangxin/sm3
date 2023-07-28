@@ -8,7 +8,7 @@ use std::io::Read;
 use super::sm3_digest::SM3Digest;
 use super::sm3_digest::SM3_DIGEST_BYTE_LENGTH;
 
-const FILE_READ_SIZE: usize = 0x100000;
+const FILE_READ_SIZE: usize = 0x20000;
 
 pub(crate) struct SM3Utils;
 
