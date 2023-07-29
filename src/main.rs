@@ -7,6 +7,7 @@ extern crate core;
 
 use std::env;
 use std::io::Error;
+use std::path::Path;
 
 mod sm3_digest;
 mod sm3_utils;
@@ -60,16 +61,22 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             std::process::exit(0);
         }
         "-f" => {
-            let digest_binary: Result<[u8; 32], Error> = sm3_utils::SM3Utils::sm3_file_digest(&arguments[3]);
-            match digest_binary {
-                Ok(binary) => {
-                    print!("{}", binary_to_hex_string(binary, base));
-                    std::process::exit(0);
-                },
-                Err(error) => {
-                    println!("Error: {error:?}");
-                    std::process::exit(-1);
-                },
+            let file_path = &arguments[3];
+            if AsRef::<Path>::as_ref(file_path).exists() {
+                let digest_binary: Result<[u8; 32], Error> = sm3_utils::SM3Utils::sm3_file_digest(&arguments[3]);
+                match digest_binary {
+                    Ok(binary) => {
+                        print!("{}", binary_to_hex_string(binary, base));
+                        std::process::exit(0);
+                    },
+                    Err(error) => {
+                        println!("[Error] {error:?}");
+                        std::process::exit(-1);
+                    },
+                }
+            } else {
+                println!("[Error] File not Exists: {file_path:?}");
+                std::process::exit(-1);
             }
         }
         _ => {
